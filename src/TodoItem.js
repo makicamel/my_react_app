@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 
-class TodoItem extends Component {
-
+function TodoItem(props){
+  return (
+    <li>
+      {props.id}: {props.title}
+    </li>
+  );
 }
 
 export default TodoItem;
