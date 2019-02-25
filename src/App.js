@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
-import './App.css';
 
 class App extends Component {
   render(){
@@ -14,8 +13,8 @@ class App extends Component {
     return (
       <div>
         <h1>TODO App</h1>
-        {/* <TodoInput />
-        <TodoList tasks={tasks} /> */}
+        <TodoInput />
+        <TodoList tasks={tasks} />
       </div>
     );
   }
