@@ -1,34 +1,21 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import logo from './logo.svg';
-import Sample from './sample.js';
+import TodoInput from './TodoInput';
+import TodoList from './TodoList';
 import './App.css';
 
-const Person = (props) => {
-  return (
-    <ul>
-      <li>name: {props.name}</li>
-      <li>bitrhday: {props.birthDay}</li>
-    </ul>
-  )
-}
-
-Person.propTypes = {
-  name: PropTypes.string,
-};
-
-const profile = {
-  name: 'makicamel',
-  birthDay: '1984/05/28',
-}
 class App extends Component {
-  render() {
+  render(){
+    // TODO: 後からstateで管理する
+    const tasks = [
+      {title: 'Todo1つめ', id: 0},
+      {title: 'Todo2つめ', id: 1},
+    ];
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Person {...profile}/>
-        </header>
+      <div>
+        <h1>TODO App</h1>
+        {/* <TodoInput />
+        <TodoList tasks={tasks} /> */}
       </div>
     );
   }
