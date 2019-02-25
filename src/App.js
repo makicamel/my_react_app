@@ -14,7 +14,7 @@ const Person = (props) => {
 }
 
 Person.propTypes = {
-  name: PropTypes.bool.isRequired,
+  name: PropTypes.string,
 };
 
 const profile = {
