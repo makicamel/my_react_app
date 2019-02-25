@@ -1,24 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
+import Sample from './sample.js';
 import './App.css';
 
+const Person = (props) => {
+  return (
+    <ul>
+      <li>name: {props.name}</li>
+      <li>bitrhday: {props.birthDay}</li>
+    </ul>
+  )
+}
+
+Person.propTypes = {
+  name: PropTypes.bool.isRequired,
+};
+
+const profile = {
+  name: 'makicamel',
+  birthDay: '1984/05/28',
+}
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <Person {...profile}/>
         </header>
       </div>
     );
