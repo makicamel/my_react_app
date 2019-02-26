@@ -11,8 +11,25 @@ class App extends Component {
       ],
       uniqueId: 1,
     };
-
   }
+
+  addTodo(title){
+    const {
+      tasks,
+      uniqueId,
+    } = this.state;
+
+    tasks.push({
+      title,
+      id: uniqueId,
+    });
+
+    this.setState({
+      tasks,
+      uniqueId: uniqueId + 1,
+    })
+  }
+
   render(){
     return (
       <div>
