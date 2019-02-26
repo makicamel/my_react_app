@@ -1,21 +1,45 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
-import './App.css';
 
 class App extends Component {
-  render(){
-    // TODO: 後からstateで管理する
-    const tasks = [
-      {title: 'Todo1つめ', id: 0},
-      {title: 'Todo2つめ', id: 1},
-    ];
+  constructor(props) {
+    super(props);
+    this.state = {
+      tasks: [
+        {title: 'default TODO', id: 0},
+      ],
+      uniqueId: 1,
+    };
+    // bindをすることでaddTodoメソッドがAppコンポーネントのstateを受け取れるようになる
+    // this.addTodo = this.addTodo.bind(this);
+  }
 
+  // addTodoを無名関数を代入する形で定義することで最初からbindされたメソッドを作成できる
+  // addTodo(title){
+  addTodo = (title) => {
+    const {
+      tasks,
+      uniqueId,
+    } = this.state;
+
+    tasks.push({
+      title,
+      id: uniqueId,
+    });
+
+    this.setState({
+      tasks,
+      uniqueId: uniqueId + 1,
+    })
+  }
+
+  render(){
     return (
       <div>
         <h1>TODO App</h1>
-        {/* <TodoInput />
-        <TodoList tasks={tasks} /> */}
+        <TodoInput addTodo={this.addTodo} />
+        <TodoList tasks={this.state.tasks} />
       </div>
     );
   }
