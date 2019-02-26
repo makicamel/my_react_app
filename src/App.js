@@ -11,9 +11,13 @@ class App extends Component {
       ],
       uniqueId: 1,
     };
+    // bindをすることでaddTodoメソッドがAppコンポーネントのstateを受け取れるようになる
+    // this.addTodo = this.addTodo.bind(this);
   }
 
-  addTodo(title){
+  // addTodoを無名関数を代入する形で定義することで最初からbindされたメソッドを作成できる
+  // addTodo(title){
+  addTodo = (title) => {
     const {
       tasks,
       uniqueId,
@@ -34,7 +38,7 @@ class App extends Component {
     return (
       <div>
         <h1>TODO App</h1>
-        <TodoInput />
+        <TodoInput addTodo={this.addTodo} />
         <TodoList tasks={this.state.tasks} />
       </div>
     );
