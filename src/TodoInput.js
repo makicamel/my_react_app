@@ -3,15 +3,25 @@ import React, {Component} from 'react';
 class TodoInput extends Component {
   constructor(props){
     super(props);
-    // this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      inputValue: '',
+    };
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      inputValue: e.target.value,
+    });
   }
   handleClick = (props) => {
-    this.props.addTodo('new TODO');
+    const inputValue = this.state.inputValue;
+    this.props.addTodo(inputValue);
   }
+
   render(){
     return (
       <div>
-        <input placeholder="TODOを入力してください" />
+        <input placeholder="TODOを入力してください" onChange={this.handleChange} />
         <button onClick={this.handleClick}>登録</button>
       </div>
     );
