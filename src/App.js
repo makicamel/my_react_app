@@ -3,18 +3,22 @@ import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 
 class App extends Component {
-  render(){
-    // TODO: 後からstateで管理する
-    const tasks = [
-      {title: 'Todo1つめ', id: 0},
-      {title: 'Todo2つめ', id: 1},
-    ];
+  constructor(props) {
+    super(props);
+    this.state = {
+      tasks: [
+        {title: 'default TODO', id: 0},
+      ],
+      uniqueId: 1,
+    };
 
+  }
+  render(){
     return (
       <div>
         <h1>TODO App</h1>
         <TodoInput />
-        <TodoList tasks={tasks} />
+        <TodoList tasks={this.state.tasks} />
       </div>
     );
   }
