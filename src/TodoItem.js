@@ -8,7 +8,7 @@ class TodoItem extends Component{
       title: props.title,
     }
   }
-  render (){
+  render(){
     return (
       <li>
         {this.state.id}: {this.state.title}

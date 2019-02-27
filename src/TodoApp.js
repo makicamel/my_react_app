@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 
 class TodoApp extends Component {
@@ -40,8 +39,7 @@ class TodoApp extends Component {
     return (
       <div>
         <h1>TODO App</h1>
-        <TodoInput addTodo={this.addTodo} />
-        <TodoList tasks={this.state.tasks} />
+        <TodoList tasks={this.state.tasks} addTodo={this.addTodo} />
         <button onClick={this.removeTodo}>reset TODOs</button>
       </div>
     );

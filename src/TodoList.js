@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 
 class TodoList extends Component {
@@ -8,11 +9,14 @@ class TodoList extends Component {
     });
 
     return (
-      <div>
-        <ul>
-          {list}
-        </ul>
-      </div>
+      <>
+        <TodoInput addTodo={this.props.addTodo} />
+        <div>
+          <ul>
+            {list}
+          </ul>
+        </div>
+      </>
     )
   };
 }
