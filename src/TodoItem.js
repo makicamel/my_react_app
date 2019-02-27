@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-function TodoItem(props){
-  return (
-    <li>
-      {props.id}: {props.title}
-    </li>
-  );
+class TodoItem extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      id: props.id,
+      title: props.title,
+    }
+  }
+  render (){
+    return (
+      <li>
+        {this.state.id}: {this.state.title}
+      </li>
+    );
+  }
 }
 
 export default TodoItem;
