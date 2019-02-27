@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 
-class App extends Component {
+class TodoApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,4 +48,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default TodoApp;
