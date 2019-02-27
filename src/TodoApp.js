@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 
-class App extends Component {
+class TodoApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,12 +11,8 @@ class App extends Component {
       ],
       uniqueId: 1,
     };
-    // bindをすることでaddTodoメソッドがAppコンポーネントのstateを受け取れるようになる
-    // this.addTodo = this.addTodo.bind(this);
   }
 
-  // addTodoを無名関数を代入する形で定義することで最初からbindされたメソッドを作成できる
-  // addTodo(title){
   addTodo = (title) => {
     const {
       tasks,
@@ -34,15 +30,22 @@ class App extends Component {
     })
   }
 
+  removeTodo = () => {
+    this.setState({
+      tasks: [],
+    });
+  }
+
   render(){
     return (
       <div>
         <h1>TODO App</h1>
         <TodoInput addTodo={this.addTodo} />
         <TodoList tasks={this.state.tasks} />
+        <button onClick={this.removeTodo}>reset TODOs</button>
       </div>
     );
   }
 }
 
-export default App;
+export default TodoApp;
