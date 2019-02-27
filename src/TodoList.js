@@ -3,14 +3,26 @@ import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 
 class TodoList extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      inputValue: '',
+    };
+  }
+
+  displayInputValue = (title) => {
+    this.setState({
+      inputValue: title,
+    });
+  }
   render () {
     const list = this.props.tasks.map(todo => {
-      return <TodoItem {...todo} key={todo.id}/>;
+      return <TodoItem {...todo} key={todo.id} displayInputValue={this.displayInputValue} />;
     });
 
     return (
       <>
-        <TodoInput addTodo={this.props.addTodo} />
+        <TodoInput addTodo={this.props.addTodo} inputValue={this.state.inputValue} />
         <div>
           <ul>
             {list}

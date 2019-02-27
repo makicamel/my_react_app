@@ -7,7 +7,11 @@ class TodoInput extends Component {
       inputValue: '',
     };
   }
-
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      inputValue: nextProps.inputValue,
+    });
+  }
   handleChange = (e) => {
     this.setState({
       inputValue: e.target.value,
@@ -21,7 +25,7 @@ class TodoInput extends Component {
   render(){
     return (
       <div>
-        <input placeholder="TODOを入力してください" onChange={this.handleChange} />
+        <input placeholder="TODOを入力してください" onChange={this.handleChange} value={this.state.inputValue} />
         <button onClick={this.handleClick}>登録</button>
       </div>
     );

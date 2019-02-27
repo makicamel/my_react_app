@@ -6,11 +6,16 @@ class TodoItem extends Component{
     this.state = {
       id: props.id,
       title: props.title,
-    }
+      displayInputValue: props.displayInputValue,
+    };
+  }
+
+  handleClick = (props) => {
+    this.state.displayInputValue(this.state.title);
   }
   render(){
     return (
-      <li>
+      <li onClick={this.handleClick}>
         {this.state.id}: {this.state.title}
       </li>
     );
