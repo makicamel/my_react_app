@@ -15,15 +15,20 @@ class TodoApp extends Component {
       tasks,
       maxId,
     } = this.state;
+    // もしidが新規のものだったら = maxIdと等しければpushする
+    // idがmaxIdよりも小さければeditする
+    if (id === maxId) {
+      tasks.push({
+        title,
+        id: maxId,
+      });
+    } else {
 
-    tasks.push({
-      title,
-      id: maxId,
-    });
+    }
 
     this.setState({
       tasks,
-      maxId: maxId + 1,
+      maxId: tasks.length,
     });
   }
 
@@ -38,7 +43,7 @@ class TodoApp extends Component {
     return (
       <div>
         <h1>TODO App</h1>
-        <TodoList tasks={this.state.tasks} addTodo={this.addTodo} />
+        <TodoList tasks={this.state.tasks} maxId={this.state.maxId} addTodo={this.addTodo} />
         <button onClick={this.removeTodo}>reset TODOs</button>
       </div>
     );

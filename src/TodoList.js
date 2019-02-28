@@ -6,16 +6,22 @@ class TodoList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      inputValue: {
+      task: {
         id: 0,
         title: '',
       },
+      maxId: 0,
     };
   }
 
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      task: nextProps.tasks[nextProps.tasks.length-1],
+    });
+  }
   displayInputValue = (props) => {
     this.setState({
-      inputValue: props,
+      task: props,
     });
   }
   render () {
@@ -25,7 +31,7 @@ class TodoList extends Component {
 
     return (
       <>
-        <TodoInput addTodo={this.props.addTodo} inputValue={this.state.inputValue} />
+        <TodoInput addTodo={this.props.addTodo} task={this.state.task} maxId={this.props.maxId} />
         <div>
           <ul>
             {list}
