@@ -6,13 +6,16 @@ class TodoList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      inputValue: '',
+      inputValue: {
+        id: 0,
+        title: '',
+      },
     };
   }
 
-  displayInputValue = (title) => {
+  displayInputValue = (props) => {
     this.setState({
-      inputValue: title,
+      inputValue: props,
     });
   }
   render () {
@@ -22,7 +25,7 @@ class TodoList extends Component {
 
     return (
       <>
-        <TodoInput addTodo={this.props.addTodo} inputValue={this.state.inputValue} />
+        <TodoInput addTodo={this.props.addTodo} inputValue={this.props.tasks} />
         <div>
           <ul>
             {list}
