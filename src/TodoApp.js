@@ -6,31 +6,31 @@ class TodoApp extends Component {
     super(props);
     this.state = {
       tasks: [],
-      uniqueId: 0,
+      maxId: 0,
     };
   }
 
   addTodo = (title) => {
     const {
       tasks,
-      uniqueId,
+      maxId,
     } = this.state;
 
     tasks.push({
       title,
-      id: uniqueId,
+      id: maxId,
     });
 
     this.setState({
       tasks,
-      uniqueId: uniqueId + 1,
+      maxId: maxId + 1,
     });
   }
 
   removeTodo = () => {
     this.setState({
       tasks: [],
-      uniqueId: 0,
+      maxId: 0,
     });
   }
 
