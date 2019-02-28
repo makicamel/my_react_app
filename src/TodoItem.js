@@ -11,7 +11,11 @@ class TodoItem extends Component{
   }
 
   handleClick = (props) => {
-    this.state.displayInputValue(this.state.title);
+    const todoProps = {
+      id: this.state.id,
+      title: this.state.title,
+    };
+    this.state.displayInputValue(todoProps);
   }
   render(){
     return (

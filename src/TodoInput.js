@@ -9,7 +9,7 @@ class TodoInput extends Component {
     };
   }
   componentWillReceiveProps(nextProps){
-    const task = nextProps.inputValue[nextProps.inputValue.length-1];
+    const task = nextProps.inputValue;
     this.setState({
       inputId: task.id,
       inputValue: task.title,

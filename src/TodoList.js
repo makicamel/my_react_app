@@ -25,7 +25,7 @@ class TodoList extends Component {
 
     return (
       <>
-        <TodoInput addTodo={this.props.addTodo} inputValue={this.props.tasks} />
+        <TodoInput addTodo={this.props.addTodo} inputValue={this.state.inputValue} />
         <div>
           <ul>
             {list}
