@@ -4,12 +4,15 @@ class TodoInput extends Component {
   constructor(props){
     super(props);
     this.state = {
+      inputId: 0,
       inputValue: '',
     };
   }
   componentWillReceiveProps(nextProps){
+    const task = nextProps.inputValue[nextProps.inputValue.length-1];
     this.setState({
-      inputValue: nextProps.inputValue,
+      inputId: task.id,
+      inputValue: task.title,
     });
   }
   handleChange = (e) => {

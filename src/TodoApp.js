@@ -5,10 +5,8 @@ class TodoApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [
-        {title: 'default TODO', id: 0},
-      ],
-      uniqueId: 1,
+      tasks: [],
+      uniqueId: 0,
     };
   }
 
@@ -26,12 +24,13 @@ class TodoApp extends Component {
     this.setState({
       tasks,
       uniqueId: uniqueId + 1,
-    })
+    });
   }
 
   removeTodo = () => {
     this.setState({
       tasks: [],
+      uniqueId: 0,
     });
   }
 
