@@ -10,7 +10,7 @@ class TodoApp extends Component {
     };
   }
 
-  addTodo = (title) => {
+  addTodo = (id, title) => {
     const {
       tasks,
       maxId,
