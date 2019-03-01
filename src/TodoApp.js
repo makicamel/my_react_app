@@ -11,19 +11,21 @@ class TodoApp extends Component {
   }
 
   addTodo = (id, title) => {
-    const {
-      tasks,
-      maxId,
-    } = this.state;
-    // もしidが新規のものだったら = maxIdと等しければpushする
-    // idがmaxIdよりも小さければeditする
+    let tasks = this.state.tasks;
+    const maxId = this.state.maxId;
+
     if (id === maxId) {
       tasks.push({
         title,
         id: maxId,
       });
     } else {
-
+      tasks = tasks.map((task) => {
+        if (task.id == id){
+          task.title = title;
+        }
+        return task;
+      });
     }
 
     this.setState({
