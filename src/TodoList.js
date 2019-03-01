@@ -16,7 +16,10 @@ class TodoList extends Component {
 
   componentWillReceiveProps(nextProps){
     this.setState({
-      task: nextProps.tasks[nextProps.tasks.length-1],
+      task: {
+        id: nextProps.tasks[nextProps.tasks.length-1].id,
+        title: '',
+      }
     });
   }
   displayInputValue = (props) => {
