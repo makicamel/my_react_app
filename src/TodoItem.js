@@ -10,6 +10,11 @@ class TodoItem extends Component{
     };
   }
 
+  componentWillReceiveProps(nextProps){
+    if (nextProps.title !== this.state.title) {
+      this.state.title = nextProps.title;
+    }
+  }
   handleClick = (props) => {
     const todoProps = {
       id: this.state.id,
