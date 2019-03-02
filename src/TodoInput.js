@@ -8,7 +8,7 @@ class TodoInput extends Component {
         id: 0,
         title: '',
       },
-      maxId: 0,
+      maxId: -1,
     };
   }
   componentWillReceiveProps(nextProps){
