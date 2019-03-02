@@ -18,6 +18,7 @@ class TodoItem extends Component{
   handleClick = (props) => {
     const todoProps = {
       id: this.state.id,
+      date: this.state.date,
       title: this.state.title,
     };
     this.state.displayInputValue(todoProps);
@@ -25,7 +26,7 @@ class TodoItem extends Component{
   render(){
     return (
       <li onClick={this.handleClick}>
-        {this.state.id}: {this.state.title}
+        {this.state.id}: {this.state.title}({this.state.date})
       </li>
     );
   }

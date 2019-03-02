@@ -10,18 +10,20 @@ class TodoApp extends Component {
     };
   }
 
-  addTodo = (id, title) => {
+  addTodo = (id, date, title) => {
     let tasks = this.state.tasks;
     const maxId = this.state.maxId;
 
     if (id === maxId) {
       tasks.push({
+        date,
         title,
         id: maxId,
       });
     } else {
       tasks = tasks.map((task) => {
-        if (task.id == id){
+        if (task.id === id){
+          task.date = date;
           task.title = title;
         }
         return task;
