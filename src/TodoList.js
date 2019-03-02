@@ -10,7 +10,7 @@ class TodoList extends Component {
         id: 0,
         title: '',
       },
-      maxId: 0,
+      maxId: -1,
     };
   }
 
