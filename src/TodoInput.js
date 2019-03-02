@@ -9,6 +9,7 @@ class TodoInput extends Component {
         title: '',
       },
       maxId: -1,
+      mode: 'new',
     };
   }
   componentWillReceiveProps(nextProps){
@@ -18,6 +19,7 @@ class TodoInput extends Component {
         title: nextProps.task.title,
       },
       maxId: nextProps.maxId,
+      mode: nextProps.task.id === nextProps.maxId ? 'new' : 'edit',
     });
   }
   handleChange = (e) => {
@@ -29,7 +31,7 @@ class TodoInput extends Component {
     });
   }
   handleClick = (props) => {
-    const id = this.state.task.id === this.state.maxId - 1 ? this.state.task.id + 1 : this.state.task.id;
+    const id = this.state.mode === 'new' ? this.state.task.id + 1 : this.state.task.id;
     const title = this.state.task.title;
     this.props.addTodo(id, title);
   }
