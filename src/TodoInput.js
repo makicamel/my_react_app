@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
+
 class TodoInput extends Component {
   constructor(props){
     super(props);
@@ -14,15 +15,17 @@ class TodoInput extends Component {
       mode: 'new',
     };
   }
+
   componentWillReceiveProps(nextProps){
+    const mode = nextProps.task.id === nextProps.maxId ? 'new' : 'edit';
     this.setState({
       task: {
         id: nextProps.task.id,
-        date: nextProps.task.date,
+        date: mode === 'new' ? new Date() : new Date(nextProps.task.date),
         title: nextProps.task.title,
       },
       maxId: nextProps.maxId,
-      mode: nextProps.task.id === nextProps.maxId ? 'new' : 'edit',
+      mode: mode,
     });
   }
   handleChangeDate = (date) => {
@@ -45,7 +48,7 @@ class TodoInput extends Component {
   }
   handleClick = (props) => {
     const id = this.state.mode === 'new' ? this.state.task.id + 1 : this.state.task.id;
-    const date = this.state.task.date;
+    const date = toLocaleString(this.state.task.date);
     const title = this.state.task.title;
     this.props.addTodo(id, date, title);
   }
@@ -58,6 +61,14 @@ class TodoInput extends Component {
       </div>
     );
   }
+}
+
+const toLocaleString = (date) => {
+  return [
+    date.getFullYear(),
+    date.getMonth() + 1,
+    date.getDate()
+    ].join('/');
 }
 
 export default TodoInput;

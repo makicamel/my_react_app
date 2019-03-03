@@ -19,7 +19,7 @@ class TodoList extends Component {
     this.setState({
       task: {
         id: nextProps.tasks[nextProps.tasks.length-1].id,
-        date: '',
+        date: nextProps.tasks[nextProps.tasks.length-1].date,
         title: '',
       }
     });
