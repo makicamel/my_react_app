@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'
 class TodoInput extends Component {
   constructor(props){
     super(props);
     this.state = {
       task: {
         id: -1,
-        date: '',
+        date: new Date(),
         title: '',
       },
       maxId: -1,
@@ -24,11 +25,11 @@ class TodoInput extends Component {
       mode: nextProps.task.id === nextProps.maxId ? 'new' : 'edit',
     });
   }
-  handleChangeDate = (e) => {
+  handleChangeDate = (date) => {
     this.setState({
       task: {
         id: this.state.task.id,
-        date: e.target.value,
+        date: date,
         title: this.state.task.title,
       }
     });
@@ -51,7 +52,7 @@ class TodoInput extends Component {
   render(){
     return (
       <div>
-        <input placeholder="YYDD" onChange={this.handleChangeDate} value={this.state.task.date} />
+        <DatePicker selected={this.state.task.date} onChange={this.handleChangeDate} />
         <input placeholder="TODOを入力してください" onChange={this.handleChangeTask} value={this.state.task.title} />
         <button onClick={this.handleClick}>登録</button>
       </div>
