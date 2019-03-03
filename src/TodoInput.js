@@ -5,11 +5,12 @@ class TodoInput extends Component {
     super(props);
     this.state = {
       task: {
-        id: 0,
+        id: -1,
         date: '',
         title: '',
       },
-      maxId: 0,
+      maxId: -1,
+      mode: 'new',
     };
   }
   componentWillReceiveProps(nextProps){
@@ -20,6 +21,7 @@ class TodoInput extends Component {
         title: nextProps.task.title,
       },
       maxId: nextProps.maxId,
+      mode: nextProps.task.id === nextProps.maxId ? 'new' : 'edit',
     });
   }
   handleChangeDate = (e) => {
@@ -41,7 +43,7 @@ class TodoInput extends Component {
     });
   }
   handleClick = (props) => {
-    const id = this.state.task.id === this.state.maxId - 1 ? this.state.task.id + 1 : this.state.task.id;
+    const id = this.state.mode === 'new' ? this.state.task.id + 1 : this.state.task.id;
     const date = this.state.task.date;
     const title = this.state.task.title;
     this.props.addTodo(id, date, title);

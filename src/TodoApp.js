@@ -6,7 +6,7 @@ class TodoApp extends Component {
     super(props);
     this.state = {
       tasks: [],
-      maxId: 0,
+      maxId: -1,
     };
   }
 
@@ -14,11 +14,11 @@ class TodoApp extends Component {
     let tasks = this.state.tasks;
     const maxId = this.state.maxId;
 
-    if (id === maxId) {
+    if (id === maxId + 1) {
       tasks.push({
         date,
         title,
-        id: maxId,
+        id: id,
       });
     } else {
       tasks = tasks.map((task) => {
@@ -32,14 +32,14 @@ class TodoApp extends Component {
 
     this.setState({
       tasks,
-      maxId: tasks.length,
+      maxId: tasks.length - 1,
     });
   }
 
   removeTodo = () => {
     this.setState({
       tasks: [],
-      maxId: 0,
+      maxId: -1,
     });
   }
 

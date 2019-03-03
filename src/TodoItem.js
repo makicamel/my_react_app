@@ -5,6 +5,7 @@ class TodoItem extends Component{
     super(props);
     this.state = {
       id: props.id,
+      date: props.date,
       title: props.title,
       displayInputValue: props.displayInputValue,
     };
@@ -12,6 +13,7 @@ class TodoItem extends Component{
 
   componentWillReceiveProps(nextProps){
     if (nextProps.title !== this.state.title) {
+      this.state.date = nextProps.date;
       this.state.title = nextProps.title;
     }
   }

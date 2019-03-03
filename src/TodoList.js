@@ -11,7 +11,7 @@ class TodoList extends Component {
         date: '',
         title: '',
       },
-      maxId: 0,
+      maxId: -1,
     };
   }
 
