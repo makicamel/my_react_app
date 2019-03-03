@@ -12,10 +12,10 @@ class TodoItem extends Component{
   }
 
   componentWillReceiveProps(nextProps){
-    if (nextProps.date !== this.state.date || nextProps.title !== this.state.title) {
-      this.state.date = nextProps.date;
-      this.state.title = nextProps.title;
-    }
+    this.setState({
+      date: nextProps.date,
+      title: nextProps.title,
+    });
   }
   handleClick = (props) => {
     const todoProps = {
