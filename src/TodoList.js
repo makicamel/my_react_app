@@ -8,6 +8,7 @@ class TodoList extends Component {
     this.state = {
       task: {
         id: 0,
+        date: '',
         title: '',
       },
       maxId: -1,
@@ -18,6 +19,7 @@ class TodoList extends Component {
     this.setState({
       task: {
         id: nextProps.tasks[nextProps.tasks.length-1].id,
+        date: nextProps.tasks[nextProps.tasks.length-1].date,
         title: '',
       }
     });

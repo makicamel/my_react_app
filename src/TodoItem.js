@@ -5,19 +5,22 @@ class TodoItem extends Component{
     super(props);
     this.state = {
       id: props.id,
+      date: props.date,
       title: props.title,
       displayInputValue: props.displayInputValue,
     };
   }
 
   componentWillReceiveProps(nextProps){
-    if (nextProps.title !== this.state.title) {
+    if (nextProps.date !== this.state.date || nextProps.title !== this.state.title) {
+      this.state.date = nextProps.date;
       this.state.title = nextProps.title;
     }
   }
   handleClick = (props) => {
     const todoProps = {
       id: this.state.id,
+      date: this.state.date,
       title: this.state.title,
     };
     this.state.displayInputValue(todoProps);
@@ -25,7 +28,7 @@ class TodoItem extends Component{
   render(){
     return (
       <li onClick={this.handleClick}>
-        {this.state.id}: {this.state.title}
+        {this.state.id}: {this.state.title}({this.state.date})
       </li>
     );
   }
