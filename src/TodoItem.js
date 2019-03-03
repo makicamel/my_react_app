@@ -12,7 +12,7 @@ class TodoItem extends Component{
   }
 
   componentWillReceiveProps(nextProps){
-    if (nextProps.title !== this.state.title) {
+    if (nextProps.date !== this.state.date || nextProps.title !== this.state.title) {
       this.state.date = nextProps.date;
       this.state.title = nextProps.title;
     }
