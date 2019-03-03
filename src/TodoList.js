@@ -12,6 +12,7 @@ class TodoList extends Component {
         title: '',
       },
       maxId: -1,
+      mode: 'new',
     };
   }
 
@@ -21,12 +22,14 @@ class TodoList extends Component {
         id: nextProps.tasks[nextProps.tasks.length-1].id,
         date: nextProps.tasks[nextProps.tasks.length-1].date,
         title: '',
-      }
+      },
+      mode: 'new',
     });
   }
   displayInputValue = (props) => {
     this.setState({
       task: props,
+      mode: 'edit',
     });
   }
   render () {
@@ -36,7 +39,7 @@ class TodoList extends Component {
 
     return (
       <>
-        <TodoInput addTodo={this.props.addTodo} task={this.state.task} maxId={this.props.maxId} />
+        <TodoInput addTodo={this.props.addTodo} task={this.state.task} mode={this.state.mode} maxId={this.props.maxId} />
         <div>
           <ul>
             {list}

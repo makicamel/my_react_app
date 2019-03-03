@@ -17,7 +17,7 @@ class TodoInput extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    const mode = nextProps.task.id === nextProps.maxId ? 'new' : 'edit';
+    const mode = nextProps.mode;
     this.setState({
       task: {
         id: nextProps.task.id,
