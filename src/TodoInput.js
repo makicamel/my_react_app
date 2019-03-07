@@ -46,16 +46,26 @@ class TodoInput extends Component {
       }
     });
   }
-  handleClick = (props) => {
+  handleClick = (e) => {
     const id = this.state.mode === 'new' ? this.state.task.id + 1 : this.state.task.id;
-    const date = toLocaleString(this.state.task.date);
+    const date = this.state.task.date;
     const title = this.state.task.title;
-    this.props.addTodo(id, date, title);
+    if (!(date)) {
+      alert('日付を入力してください');
+      return false;
+    } else if (title === '') {
+      alert('TODOを入力してください')
+      return false;
+    }
+    this.props.addTodo(id, toLocaleString(date), title);
   }
   render(){
     return (
       <div>
-        <DatePicker selected={this.state.task.date} onChange={this.handleChangeDate} />
+        <DatePicker
+          selected={this.state.task.date}
+          onChange={this.handleChangeDate}
+          dateFormat='yyyy/MM/dd' />
         <input placeholder="TODOを入力してください" onChange={this.handleChangeTask} value={this.state.task.title} />
         <button onClick={this.handleClick}>登録</button>
       </div>
