@@ -17,10 +17,18 @@ class TodoList extends Component {
   }
 
   componentWillReceiveProps(nextProps){
+    let id, date = '';
+    if (nextProps.tasks.length > 0){
+      id = nextProps.tasks[nextProps.tasks.length-1].id;
+      date = nextProps.tasks[nextProps.tasks.length-1].date;
+    } else {
+      id = 0;
+      date = '';
+    }
     this.setState({
       task: {
-        id: nextProps.tasks[nextProps.tasks.length-1].id,
-        date: nextProps.tasks[nextProps.tasks.length-1].date,
+        id: id,
+        date: date,
         title: '',
       },
       mode: 'new',
