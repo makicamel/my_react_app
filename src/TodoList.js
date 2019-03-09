@@ -22,7 +22,7 @@ class TodoList extends Component {
       id = nextProps.tasks[nextProps.tasks.length-1].id;
       date = nextProps.tasks[nextProps.tasks.length-1].date;
     } else {
-      id = 0;
+      id = -1;
       date = '';
     }
     this.setState({
